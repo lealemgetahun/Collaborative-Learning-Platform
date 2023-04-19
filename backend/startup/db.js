@@ -4,9 +4,9 @@ require("dotenv").config();
 require("../index");
 var connectionString = "";
 if (process.env.NODE_ENV === "test") {
-    connectionString = process.env.APP_DB_CONNECTION_TEST;
+    connectionString = process.env.MD_TEST;
 } else {
-    connectionString = process.env.APP_DB_CONNECTION;
+    connectionString = process.env.MD_DEV;
 }
 mongoose.connect(
     connectionString,
@@ -14,7 +14,6 @@ mongoose.connect(
         useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: false,
     },
     (err) => {
         if (err) {
